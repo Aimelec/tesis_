@@ -1,0 +1,20 @@
+%\begin{center}
+%\large \bf \runtitulo
+%\end{center}
+%\vspace{1cm}
+\chapter*{\runtitulo}
+
+\noindent Los ojos han probado ser una ventana a una gran variedad de procesos cognitivos, por ejemplo, relacionados con la atención y la memoria. Ambas son funciones fundamentales del proceso de lectura y comprensión lectora. Por ello, el estudio de los movimientos de los ojos durante la lectura ha captado la atención de los neurolingüistas por más de un siglo, estableciendo al seguimiento ocular como una herramienta fundamental para entender el procesamiento del lenguaje en el cerebro.
+
+En paralelo, en el campo del procesamiento del lenguaje natural, se han desarrollado herramientas para análisis del texto, principalmente a través de la tarea de predicción de palabras o de extracción de tópicos, y, más recientemente, junto a la generación de texto se han desarrollado modelos capaces de comprender textos para sostener interacciones fluidas con humanos en el desarrollo de tareas generales. El entrenamiento de estos modelos siempre ha sido a partir de textos escritos, los cuales generalmente fueron editados, y el modelo los utiliza como insumo de forma lineal y uniforme tal como le fueron presentados. Sin embargo, si bien la lectura es generalmente lineal, existen tanto variaciones en los tiempos de lectura de cada palabra como regresiones a secciones del texto anterior. Estas variaciones en la forma de la lectura están asociadas principalmente a la dificultad o ambigüedad del texto leído.
+
+El objetivo de la tesis es cambiar el foco de los modelos de la persona que escribe a la que lee, incorporando información de los movimientos oculares durante el entrenamiento. A partir de datos experimentales recolectados de $76$ personas leyendo cuentos cortos, se procedió a extraer métricas clásicas sobre seguimiento ocular durante la lectura (como, por ejemplo, la duración de la mirada sobre una palabra). Esta información se incorporó a un modelo de lenguaje basado en redes LSTM (\textit{Long Short-Term Memory}) a través de su predicción y de alimentar al modelo con el texto en el mismo orden que fue leído. Al extraer las representaciones vectoriales de las palabras (\textit{embeddings}), se observó que la distancia coseno entre pares de palabras correlacionaron menos con juicios de similitud humanos sobre esos mismos pares de palabras con respecto a un modelo base de referencia ($0,12$ frente a $0,19$, con una distancia intercuartil de $0.5$ para ambos). No obstante, la adición de información de movimientos oculares mejoró levemente esta correlación frente a no poseer dicha información ($0,13$ vs $0,12$, con una distancia intercuartil de $0,5$ para ambos).
+
+El reentrenamiento con texto bajo el orden leído por las personas no proporcionó mejoras frente a su equivalente con el orden original del texto, posiblemente debido a su pre entrenamiento con texto de \textit{Wikipedia}. Por otro lado, la incorporación de información de movimientos oculares pareciera acercar levemente al espacio vectorial de las palabras a los juicios de similitud humanos. Trabajo a futuro incluye distintas maneras de incorporar esta información, así como la adición de otras métricas, y la utilización de tareas más extrínsecas para la evaluación. La presente tesis es una prueba de concepto de los avances que se podrían lograr incorporando más información de la persona que lee, y escalando a modelos más complejos.
+
+
+
+
+\bigskip
+
+\noindent\textbf{Palabras claves:} NLP, Fijaciones, LLM, Movimientos Oculares, LMM

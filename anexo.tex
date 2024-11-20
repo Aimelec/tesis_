@@ -1,0 +1,61 @@
+\chapter{Anexo}
+
+\section{Hiperparámetros del modelo}
+
+\begin{table}[H]
+    \centering
+    \begin{tblr}{|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{3cm}|}
+        \hline
+        \textbf{Hiperparámetro} & \textbf{Descripción} & \textbf{Valor por defecto} \\
+        \hline
+        layer\_num & Cantidad de celdas LSTM que presenta la red neuronal & 3 \\
+        \hline
+        embed\_size & Tamaño del embedding resultante de la capa de embeddings & 300 \\
+        \hline
+        hidden\_size & Dimensión del resultado de la capa oculta de la celda LSTM, lo que se conoce como h\_t & 1150 \\
+        \hline
+        w\_drop & Weight drop correspondiente al interior de la capa de las celdas LSTM & 0.5 \\
+        \hline
+        dropout\_i & Dropout que se aplica a los vectores de palabras resultantes de la capa de embeddings & 0.4 \\
+        \hline
+        dropout\_l & Dropout que se aplica entre medio de las conexiones entre una celda LSTM y otra & 0.3 \\
+        \hline
+        dropout\_o & Dropout que se aplica al resultado de la última capa LSTM & 0.4 \\
+        \hline
+        dropout\_e & Dropout que se aplica a la capa de embeddings & 0.1 \\
+        \hline
+        winit & Valor de inicialización de los pesos de la capa de embeddings & 0.1 \\
+        \hline
+        batch\_size & Tamaño del batch utilizado para entrenar & 30 \\
+        \hline
+        valid\_batch\_size & Tamaño del batch utilizado para medir performance en el corpus de validación & 10 \\
+        \hline
+        bptt & Tamaño de la secuencia* utilizado en el algoritmo de backpropagation through time & 70 \\
+        \hline
+        ar & Parámetro utilizado en el algoritmo de activation regularization & 2 \\
+        \hline
+        tar & Parámetro utilizado en el algoritmo de temporary activation regularization & 1 \\
+        \hline
+    \end{tblr}
+    \label{tab:hiperparametros_1}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tblr}{|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{3cm}|}
+        \hline
+        weight\_decay & Constante utilizada en la regularización L2 & 1.2e-6 \\
+        \hline
+        epochs & Cantidad de épocas & 500 \\
+        \hline
+        lr & Learning rate & 30 \\
+        \hline
+        max\_grad\_norm & Threshold utilizado en el algoritmo de gradient clipping & 0.25 \\
+        \hline
+        non\_mono & Tamaño de la ventana que se utiliza para generar el estado de no monotonicidad & 5 \\
+        \hline
+    \end{tblr}
+    \label{tab:hiperparametros_2}
+\end{table}
+
+*El tamaño de la secuencia es variable de acuerdo a la época, pero utiliza este valor como base. Para ver mas, consulte en \ref{sec:awd-lstm}

@@ -1,0 +1,66 @@
+\chapter{Conclusiones}
+
+Luego de finalizados los experimentos y puestos en evidencia los resultados de los mismos, 
+se decidió partir de dos ejes que se fueron encontrando a lo largo del trabajo para 
+elaborar las conclusiones.
+
+El primero de ellos es, al contrario de lo que se esperaba, la diferencia en los 
+resultados de las similitudes con los juicios de valor a favor de la arquitectura Word2Vec 
+frente a la de la arquitectura AWD-LSTM. Creemos que esto se debe principalmente a la 
+estructura interna de estas y a la información que los \textit{embeddings} de cada arquitectura 
+albergan dentro de sus dimensiones. Mientras que el objetivo principal de un modelo 
+como Word2Vec es devolver una serie de \textit{embeddings}, el objetivo de un modelo de AWD-LSTM 
+es aquel de predecir la siguiente palabra dado un contexto. Esto evidencia la necesidad 
+de contar con información no sólo semántica de las palabras, sino también sintáctica y 
+léxica, información que creemos se encuentra en parte dentro de los \textit{embeddings} de la 
+arquitectura, generando así resultados no tan positivos cuando se comparan los mismos 
+con juicios de similitud netamente semánticos, como es el caso de Multi-Simlex. 
+Por otro lado, se muestra que los \textit{embeddings} generados por Word2Vec 
+(\textit{embeddings} cargados de información semántica) obtienen resultados 
+considerablemente mejores cuando se comparan con los juicios de similitud humanos.
+
+Esta hipótesis toma más fuerza al observar los resultados del entrenamiento 
+con los \textit{embeddings} preentrenados de Word2Vec, ya que desde la primer época 
+se ve un descenso brusco de la correlación de los \textit{embeddings} con Multi-Simlex, 
+el cual creemos que se debe a que la red neuronal está forzando a los pesos 
+de los \textit{embeddings} a cambiar hacia unos \textit{embeddings} con información tanto 
+sintáctica como semántica de las palabras dado el contexto de entrenamiento.
+
+Por otro lado, el otro eje, ya haciendo hincapié en la arquitectura AWD-LSTM, es, 
+sorpresivamente, la disminución de la similitud con los juicios de valor al 
+reentrenar el modelo con textos de los cuentos acompañados con información cognitiva. 
+Creemos que esto se debe principalmente a la estructura de los \textit{scanpaths}, los 
+cuales al respetar la forma en la que se leyeron los textos, presentando saltos 
+de palabras, repeticiones, regresiones, etc, la sintaxis del texto utilizado 
+para reentrenar no es sobre lo que fue entrenado previamente el modelo, lo 
+que intuimos que empeora los \textit{embeddings} a la hora de compararlos.
+
+Esto se evidencia más al observar que el modelo reentrenado con los textos 
+planos es el que mejor similitud presenta frente al resto. De todas formas, 
+ninguno de los modelos reentrenados logra superar al modelo base, creemos 
+principalmente debido a que la información presente en los cuentos es demasiado 
+específica al compararla con el gran corpus de texto con el cual fue entrenado el mismo.
+
+No obstante, también se puede observar que los modelos reentrenados con las 
+métricas de movimientos oculares aprenden información sobre las mismas, lo 
+cual consideramos que justifica la mejora de la similitud con los juicios de 
+valor de los modelos reentrenados con los scanpaths en comparación a su 
+reentrenamiento sin dicha información.
+
+Por lo tanto, vemos que existen cabos sueltos que podrían llegar a servir 
+de puntapié para trabajos futuros, como por ejemplo:
+
+\begin{itemize}
+    \item Cambiar la forma en la cual se incorpora la información cognitiva al modelo, 
+    concatenando las métricas \parencite{hollenstein2019} en lugar de 
+    predecirlas, condicionando la red neuronal.
+    \item Reentrenar el modelo base con otro formato de texto, el cual no 
+    conlleve consigo la pérdida de sintaxis de los cuentos y que además 
+    permita la incorporación de las métricas.
+    \item Evaluar estos embeddings con otros métodos más extrínsecos, 
+    como podría ser tareas más relacionadas con el pensamiento humano o 
+    subjetividad humana, como análisis de sentimientos o comprensión lectora. 
+    Incluso se podrían probar otros métodos de evaluación de la misma 
+    índole que los juicios de similitud, como la utilización de 
+    analogías de palabras. \parencite{Wang_2019}
+\end{itemize}
