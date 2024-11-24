@@ -36,6 +36,8 @@ Por último, para alimentar al modelo, se separan estos \textit{batches} en lote
 
 \section{Validación de Implementación Base}
 
+\label{sec:validacion_base}
+
 Una vez presentada la implementación base, se buscó estar seguros de que la misma se comportaba de manera similar en cuanto a capacidad de predicción con una implementación de AWD-LSTM. Para poder averiguar empíricamente esta cuestión, se decidió comparar la implementación base obtenida con la implementación proveída por la librería de \textit{Python} denominada \textit{Fastai}, la cual presenta diversas arquitecturas de modelos de lenguajes. Sin embargo, como esta no permite la modificación de su estructura a nivel red neuronal, se la había descartado como implementación base.
 Previamente a esto, se modificó la forma en la cual la LSTM tokeniza y numericaliza los textos, usando también la librería \textit{Fastai} para tokenizarlos, no solo por comodidad, sino también debido a que esta genera nuevos \textit{tokens} de acuerdo a distintos contextos. A futuro esta modificación también serviría en términos de tiempo de ejecución y espacio de memoria, ya que la implementación base obtenía los \textit{tokens} seleccionando el texto completo y transformándolo en un conjunto de palabras, lo cual para corpus muy grandes no sería factible. Los resultados de la comparación se pueden encontrar en la experimentación correspondiente.
 
