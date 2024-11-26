@@ -1,11 +1,12 @@
 \chapter{Metodologías}
 
-Para poder cumplir con los objetivos de este trabajo, se ha decidido dividir el mismo en 3 ejes principales:
+Para poder cumplir con los objetivos de este trabajo, se ha decidido dividir el mismo en 3 ejes principales. \bb{Cada uno de ellos serán presentados en los próximos capítulos}:
 
 \begin{enumerate}
-    \item Preprocesamiento de los datos cognitivos en distintos formatos, los cuales servirán como entrada para el reentrenamiento del modelo de lenguaje.
-    \item Adaptación de la implementación del modelo de lenguaje elegido, partiendo de una implementación base a la cual se le realizaran diversos cambios con el objetivo de poder entrenar el modelo a nuestro gusto, además de arreglar distintos problemas que pueda presentar la implementación en el camino.
-    \item Entrenamiento del modelo de lenguaje, en busca de un modelo base adecuado el cual se pueda usar para reentrenar sobre el mismo. Una vez encontrado el mismo, también se reentrenará el modelo utilizando los datos obtenidos de los experimentos cognitivos. Luego se evaluará qué tan bien se comportan los \textit{embeddings} de estos modelos con la información cognitiva comparándolos con dos \textit{datasets} que nos permitirán obtener información sobre juicios de similitud por parte del ser humano:
+    \item \textbf{Preprocesamiento de los datos cognitivos (Capítulo \bb{[Ref]}):} en distintos formatos, los cuales servirán como entrada para el reentrenamiento del modelo de lenguaje .
+    \item \textbf{Adaptación de la implementación del modelo de lenguaje elegido (Capítulo \bb{[Ref]}):} partiendo de una implementación base a la cual se le realizaran diversos cambios con el objetivo de poder entrenar el modelo a nuestro gusto, además de arreglar distintos problemas que pueda presentar la implementación en el camino.
+    \item \textbf{Entrenamiento del modelo de lenguaje (Capítulo \bb{[Ref]}):} en busca de un modelo base adecuado el cual se pueda usar para reentrenar sobre el mismo. Una vez encontrado el mismo, también se reentrenará el modelo utilizando los datos obtenidos de los experimentos cognitivos. 
+    \item \textbf{Exploración de técnicas de validación (Capítulo \bb{[Ref]}):} Luego se evaluará qué tan bien se comportan los \textit{embeddings} de estos modelos con la información cognitiva comparándolos con dos \textit{datasets} que nos permitirán obtener información sobre juicios de similitud por parte del ser humano:
     \begin{enumerate}
         \item \textit{SWOW-RP}: Base de datos obtenida a partir de tareas de asociación de palabras. Es decir, tareas en las cuales a partir de una palabra (señal), se asocia a la misma la primer palabra que al sujeto le salga de la mente. En el caso de SWOW-RP, se obtiene información de las primeras 3 palabras luego de mostrada la señal. \parencite{Cabana2023}
         \item \textit{Multi-Simlex}: Repositorio que provee conjuntos de pares de palabras a los cuales a cada una se le asigna una similitud a partir del juicio humano. \parencite{Vulic2020}

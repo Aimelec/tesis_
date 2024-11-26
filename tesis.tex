@@ -22,6 +22,8 @@
 \DeclareRobustCommand{\hlorange}[1]{{\sethlcolor{Orange}\hl{#1}}}
 \DeclareRobustCommand{\hlyellow}[1]{{\sethlcolor{Yellow}\hl{#1}}}
 
+\newcommand{\bb}[1]{{\textcolor{red}{#1}}}
+
 
 % Definir un nuevo tipo de subsubsection llamado sidetext
 \titleformat{\sidetext}[runin] % Estilo similar a la subsubsection
@@ -77,11 +79,14 @@
 \input{preprocesamiento.tex}
 \input{implementacion.tex}
 \input{experimentacion.tex}
-\input{conclusiones}
-\input{anexo.tex}
+% \input{conclusiones}
 
 %%%% BIBLIOGRAFIA
 \backmatter
 \printbibliography
+
+%%%% El Anexo va al final, dsp de la biblio
+% \input{anexo.tex}
+
 
 \end{document}
