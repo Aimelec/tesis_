@@ -430,8 +430,7 @@ Para poder poner en evidencia esto último, se optó por realizar un experimento
 adicional previo a la elección del modelo base. Uno de los métodos para ayudar 
 a un modelo de lenguaje a mejorar su capacidad predictiva durante el entrenamiento 
 es aquella de partir con \textit{embeddings} preentrenados por otro modelo y dejar que 
-el modelo actual ajuste estos durante el entrenamiento. \parencite{Wang2020}
-A partir de esto, se decidió entrenar un modelo idéntico al modelo anterior 
+el modelo actual ajuste estos durante el entrenamiento \parencite{Wang2020}. A partir de esto, se decidió entrenar un modelo idéntico al modelo anterior 
 durante $10$ épocas, con la salvedad de que esta vez se lo entrenó inicializando 
 la capa de \textit{embeddings} de la red neuronal con los \textit{embeddings} provenientes 
 del modelo de Word2Vec.
