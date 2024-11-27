@@ -14,7 +14,7 @@ Los experimentos realizados se dividieron en sesiones independientes de hasta 1 
 
 El registro de movimientos oculares se realizó con equipos \textit{EyeLink 1000} (SR Research, Ontario, Canadá) ya disponibles. Estos equipos poseen la mayor precisión temporal y espacial del mercado. Siguiendo las especificaciones del fabricante, se realizó una calibración del equipo antes y después de la lectura de cada texto. En esta se le pide al participante que fije la vista en determinados puntos en la pantalla. Sólo se aceptaron calibraciones/validaciones con un error promedio menor a 0.5 grados de ángulo visual. Luego, cada una de las sesiones fue analizada manualmente para verificar que los movimientos oculares sigan los patrones esperados y no haya descalibraciones severas. Durante estos análisis se tomaron ciertas libertades, por ejemplo, debido a que los datos de movimientos oculares suelen estar sujetos a descalibración en el eje y (filas), ocurrió que existieron varias fijaciones que se registraron por encima de las palabras en las que los ojos están enfocados. Dado este escenario, se estableció un umbral manual para definir las líneas (es decir, a qué línea de texto pertenece cada fila de fijaciones) en cada pantalla para cada prueba. De esta manera se reubicaron fijaciones mal asignadas para preservar el mayor número posible de fijaciones.
 
-Luego, si la sesión del participante fue aceptada, se tenían en cuenta ciertos recaudos a la hora de descartar fijaciones:
+Luego, si la prueba generada por el participante fue aceptada, se tenían en cuenta ciertos recaudos a la hora de descartar fijaciones:
 
 \begin{itemize}
     \item Las fijaciones iniciales se descartaban si generaban regresiones, así como fijaciones extremadamente largas o cortas ($\sim1000 ms$ y $\sim50 ms$), ya que tienden a corresponder a momentos en los que el participante no está prestando atención o a detecciones incorrectas de fijaciones, respectivamente.
@@ -30,17 +30,18 @@ Luego, si la sesión del participante fue aceptada, se tenían en cuenta ciertos
 Al finalizar las experimentaciones y su posterior preprocesamiento, se contaron con los siguientes datos:
 
 \subsection{Métricas generales}
-\bb{El total de participantes del experimento de seguimiento ocular ($N=76$) dió lugar a un total de 1126 peubas (\bb{[definir qué es una prueba]}). [Explicar de dónde salen las 110 pruebas descartadas].} Por lo tanto, se puede observar que para el entreno de la AWD-LSTM se contó con el 91,12\% de las pruebas que originalmente se recabaron \bb{quedándonos con un total de XXX pruebas (Tabla \ref{tab:metricas_generales}).}
+
+El total de participantes del experimento de seguimiento ocular ($N=76$) dió lugar a un total de 1126 pruebas. Del total, unas 110 pruebas fueron descartadas, ya sea debido a descalibraciones severas durante la realización del experimento, o debido a la falta de atención del sujeto durante el mismo. Por lo tanto, se puede observar que para el entreno de la AWD-LSTM se contó con el 91,12\% de las pruebas que originalmente se recabaron quedándonos con un total de 1016 pruebas (Tabla \ref{tab:metricas_generales}).
 
 
 \begin{table}[H]
     \centering
-    \caption{\bb{[AGREGAR EPIGRAFE]}}
+    \caption{Métricas generales asociadas a los experimentos de movimientos oculares. A pesar del alto porcentaje de pruebas finales, se descartaron 110 pruebas debido a descalibraciones severas o falta de atención de los participantes.}
     \begin{tblr}{|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|}
         \hline
         Participantes & Pruebas & Pruebas descartadas & Pruebas finales \\
         \hline
-        76 & 1126 & 110 & \bb{XXX}\\
+        76 & 1126 & 110 & 1016\\
         \hline
     \end{tblr}
     \label{tab:metricas_generales}
@@ -52,51 +53,51 @@ A partir de estos filtros se obtuvieron un promedio de $56,3$ pruebas por cada t
 \begin{scriptsize}
 \begin{table}[H]
     \centering
-    \caption{\bb{[HACER]}}
+    \caption{Cantidad de pruebas por cuento. Se puede observar que la cantidad de pruebas por cuento es equitativa, con un promedio de 56,3 pruebas por cuento y un desvío estándar de 4,30 pruebas.}
     \begin{tblr}{|>{\centering\arraybackslash}m{6cm}|>
     {\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{2cm}|}
         \hline
         Cuento & Autor & Pruebas \\
         \hline
-        La noche de los feos & \bb{[HACER]}& 53 \\
+        La noche de los feos & Mario Benedetti & 53 \\
         \hline
-        Cómo funcionan los bolsillos & & 50 \\
+        Cómo funcionan los bolsillos & Valentín Muro & 50 \\
         \hline
-        La máscara de la Muerte Roja & & 53 \\
+        La máscara de la Muerte Roja & Edgar Allan Poe & 53 \\
         \hline
-        Las fotografías & & 50 \\
+        Las fotografías & Silvina Ocampo & 50 \\
         \hline
-        La salud de los enfermos & & 61 \\
+        La salud de los enfermos & Julio Cortázar & 61 \\
         \hline
-        Buenos Aires & & 54 \\
+        Buenos Aires & Hernán Casciari & 54 \\
         \hline
-        Wakefield & & 61 \\
+        Wakefield & Nathaniel Hawthorne & 61 \\
         \hline
-        Cómo funciona caminar en la nieve & & 50 \\
+        Cómo funciona caminar en la nieve & Valentín Muro & 50 \\
         \hline
-        Ahora debería reírme, si no estuviera muerto & & 59 \\
+        Ahora debería reírme, si no estuviera muerto & Angela Carter & 59 \\
         \hline
-        El espejo & & 60 \\
+        El espejo & Haruki Murakami & 60 \\
         \hline
-        Embarrar la magia & & 53 \\
+        Embarrar la magia & Facundo Alvarez Heduan & 53 \\
         \hline
-        La lluvia de fuego & & 61 \\
+        La lluvia de fuego & Leopoldo Lugones & 61 \\
         \hline
-        Educar para escalar y bucear & & 52 \\
+        Educar para escalar y bucear & Andrés Rieznik & 52 \\
         \hline
-        El golpe de gracia & & 54 \\
+        El golpe de gracia & Ambrose Bierce & 54 \\
         \hline
-        La gallina degollada & & 60 \\
+        La gallina degollada & Horacio Quiroga & 60 \\
         \hline
-        Rubí y el lago danzante & & 60 \\
+        Rubí y el lago danzante & Marcelo Cohen & 60 \\
         \hline
-        La canción que cantábamos todos los días & & 60 \\
+        La canción que cantábamos todos los días & Luciano Lamberti & 60 \\
         \hline
-        El almohadón de plumas & & 61 \\
+        El almohadón de plumas & Horacio Quiroga & 61 \\
         \hline
-        Una rosa para Emilia & & 60 \\
+        Una rosa para Emilia & William Faulkner & 60 \\
         \hline
-        La de la Obsesión por la Patineta & & 54 \\
+        La de la Obsesión por la Patineta & Hernán Casciari & 54 \\
         \hline
     \end{tblr}
     \label{tab:cuentos_pruebas}
