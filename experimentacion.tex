@@ -2,7 +2,7 @@
 
 \section{Materiales}
 
-En la presente sección enunciamos los diversos recursos que hemos utilizado y ayudarán a entender cómo se llevaron a cabo los experimentos tanto previos en el laboratorio como los del presente trabajo.
+En la presente sección enunciamos los diversos recursos que hemos utilizado y ayudarán a entender cómo se llevaron a cabo los experimentos, tanto previos en el laboratorio como los del presente trabajo.
 
 \subsection{Corpus de entrenamiento}
 
@@ -16,7 +16,7 @@ como \textit{Wikipedia}, \textit{Wikinews}, \textit{Wikiquotes} y muchas más, c
 correspondiente a una oración por cada una. A menos que se indique lo contrario, 
 los modelos serán entrenados con este corpus.
 
-Además, todos los gráficos relacionados a la metrica \textit{perplexity} fueron realizados sobre el \textit{dataset} de validación del corpus, dejando asi el \textit{dataset} de entrenamiento exclusivamente para el entrenamiento de los modelos. Para más informacion sobre como se dividió el corpus, ver la sección \ref{sec:validacion_base}.
+Además, todos los gráficos relacionados a la métrica \textit{perplexity} fueron realizados sobre el \textit{dataset} de validación del corpus, dejando asi el \textit{dataset} de entrenamiento exclusivamente para el entrenamiento de los modelos. Para más informacion sobre como se dividió el corpus, ver la sección \ref{sec:validacion_base}.
 
 
 \subsection{Experimentos de similitud}
@@ -27,7 +27,7 @@ Como mencionamos anteriormente, el eje principal de este trabajo es el de analiz
 comportamiento de modelos generados a partir de la arquitectura AWD-LSTM luego de incorporarles 
 información cognitiva. Para esto, se decidió comparar los embeddings obtenidos de los modelos 
 resultantes con dos bases de datos que nos permiten obtener información sobre juicios de similitud 
-humanos entre pares de palabras, SWOW-RP y Multi-Simlex. A continuación, se muestra como fueron 
+humanos entre pares de palabras: SWOW-RP y Multi-Simlex. A continuación, se muestra cómo fueron 
 preprocesados estos repositorios y de qué manera luego fueron comparados con los embeddings 
 generados tanto en el presente trabajo como los de trabajos previos en el laboratorio.
 
@@ -35,7 +35,7 @@ generados tanto en el presente trabajo como los de trabajos previos en el labora
 
 Como habíamos denotado previamente, Multi-Simlex es un repositorio que cuenta con respuestas 
 sobre juicios de similitud entre pares de palabras brindados por 10 anotadores distintos. 
-Estos sujetos dieron para cada par de palabras un valor de similitud entre $0$ y $6$, donde $0$ 
+Estos sujetos dieron, para cada par de palabras, un valor de similitud entre $0$ y $6$, donde $0$ 
 se considera muy poca similitud y $6$ extremadamente similares. Para poder tener una métrica 
 más compacta con la cual comparar los \textit{embeddings}, se decidió tomar el promedio de los valores 
 dados por estos anotadores como nuestra medida de similitud final.
@@ -47,11 +47,9 @@ de los valores dados por estos anotadores y, por el otro, la similitud coseno en
 
 \subsubsection{SWOW-RP}
 
-Por otro lado, SWOW-RP es una base de datos resultante de varias tareas de asociación de palabras, 
+Por otro lado, SWOW-RP es una base de datos resultante de varias tareas de asociación de palabras \bb{[aclarar que está hecho sobre hablantes roioplatenses. Poner alguna cita]}, 
 donde a partir de una palabra inicial (\textit{cue}), los sujetos contestaban con las primeras tres 
-palabras que se les venían a la mente.
-
-A partir de ahí, el repositorio brinda información ya procesada sobre estas tareas, ya sea 
+palabras que se les venían a la mente. \bb{[Elimino salto de párrafo]} A partir de ahí, el repositorio brinda información ya procesada sobre estas tareas, ya sea 
 para únicamente la primera respuesta o para las tres. Por ejemplo, brinda la frecuencia de 
 una respuesta sobre una \textit{cue} o incluso la probabilidad condicional de haber elegido una 
 respuesta a partir de una \textit{cue} en particular. En nuestro caso, se tomó la decisión de tomar 
@@ -76,21 +74,19 @@ de $1000$ pares generados con reposición unas $100$ veces.
 
 \label{sec:trabajos_previos}
 
-Previo a este trabajo, dentro del laboratorio de la mano del licenciado Fermin Travi se estuvo 
+Previo a este trabajo, dentro del laboratorio de la mano del %licenciado
+\bb{doctorando} Fermin Travi se estuvo 
 investigando sobre la incidencia de la información cognitiva sobre otro tipo de modelos previos 
-a la arquitectura AWD-LSTM, en este caso, Word2Vec.
-
-Haciendo hincapié en el mismo, se utilizó una arquitectura de Word2Vec basada en \textit{skip-grams} y 
+a la arquitectura AWD-LSTM, en este caso, Word2Vec.\bb{[Elimino salto de párrafo]} Haciendo hincapié en el mismo, se utilizó una arquitectura de Word2Vec basada en \textit{skip-grams} y 
 se entrenó al modelo utilizando como corpus base el mismo corpus aprovechado en este trabajo, 
-valiéndose del 100\% del mismo durante el entrenamiento por una cantidad de 5 épocas.
-
+valiéndose del 100\% del mismo durante el entrenamiento por una cantidad de 5 épocas. \bb{[Elimino salto de párrafo]}
 Luego, los \textit{embeddings} resultantes del modelo fueron comparados con los repositorios de 
 juicios de valor humanos presentados anteriormente, calculando la correlación entre los 
-\textit{embeddings} y los datos de los repositorios, tal y como se observa en la figura siguiente:
+\textit{embeddings} y los datos de los repositorios (Figura \ref{fig:simlex_word2vec})
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
-    \includegraphics[width=0.8\textwidth]{imagenes/simlex_word2vec.png}
+    \includegraphics[width=0.6\textwidth]{imagenes/simlex_word2vec.png}
     \caption{Correlaciones entre distintos modelos de Word2Vec con los juicios de valor generados 
     por Multi-Simlex. Entre los modelos comparados se encuentran un modelo base implementado a 
     partir de \textit{skip-grams}, y 3 modelos reentrenados a partir de este, uno con los \textit{scanpaths} sin 
@@ -116,10 +112,18 @@ fueron reentrenados por una cantidad de 5 épocas valiéndose del 100\% de estos
 textos, introduciendo información sobre los movimientos oculares de los sujetos 
 durante la lectura de los mismos.
 
-Luego, los \textit{embeddings} generados por estos modelos fueron comparados con los datos 
-del repositorio SWOW-RP, brindando los siguientes resultados:
+% Luego, 
+Los \textit{embeddings} generados por estos modelos fueron comparados con los datos 
+del repositorio SWOW-RP \bb{(Figura \ref{fig:swow_word2vec})}.
+\bb{[Elimino salto de párrafo]} Como se puede observar, los modelos reentrenados con los \textit{scanpaths} muestran una peor 
+correlación con SWOW-RP comparados con el modelo original, indicando de cierta manera 
+que con esta forma de comparación los \textit{embeddings} reentrenados parecen captar peor las 
+similitudes entre los pares de palabras obtenidos en el repositorio. Esto al menos, para 
+el caso de las palabras en estímulo, o sea las palabras dentro del vocabulario de los 
+\textit{scanpaths}. Para el resto de palabras dentro del vocabulario del modelo, no parecen haber 
+cambios sustanciales.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=1\textwidth]{imagenes/swow_word2vec.png}
     \caption{Correlaciones entre distintos modelos de Word2Vec y los juicios de similitud 
@@ -129,13 +133,7 @@ del repositorio SWOW-RP, brindando los siguientes resultados:
     \label{fig:swow_word2vec}
 \end{figure}
 
-Como se puede observar, los modelos reentrenados con los \textit{scanpaths} muestran una peor 
-correlación con SWOW-RP comparados con el modelo original, indicando de cierta manera 
-que con esta forma de comparación los \textit{embeddings} reentrenados parecen captar peor las 
-similitudes entre los pares de palabras obtenidos en el repositorio. Esto al menos, para 
-el caso de las palabras en estímulo, o sea las palabras dentro del vocabulario de los 
-\textit{scanpaths}. Para el resto de palabras dentro del vocabulario del modelo, no parecen haber 
-cambios sustanciales.
+
 
 \section{Validación de implementación base}
 
@@ -145,7 +143,7 @@ Tal y como se comentó en secciones anteriores, luego de obtener la implementaci
 de la arquitectura AWD-LSTM, se propuso validarla con otra implementación confiable que 
 nos permita constatar que el código funciona correctamente. En este caso, se utilizó la 
 implementación de la librería \textit{Fastai}.
-
+\bb{[Elimino salto de párrafo]} 
 Para realizar esta comparación, se decidió realizar un experimento entrenando dos 
 modelos distintos: uno a partir de la herramienta brindada por \textit{Fastai} y otro 
 entrenandolo a partir de la implementación base, con el objetivo de poder corroborar 
@@ -157,10 +155,9 @@ uno de los corpus empleados en la experimentación del trabajo original de la AW
 \parencite{merity2017regularizingoptimizinglstmlanguage}, llamado \textit{Penn Treebank Dataset}, el cual engloba una serie de 
 artículos en inglés del \textit{Wall Street Journal}, llegando a cubrir una 
 cantidad de $38.219$ oraciones.
-
+\bb{[Elimino salto de párrafo]} 
 En particular, ambos modelos fueron entrenados durante $500$ épocas y se los configuró 
-de manera tal que los modelos resultantes fueran los más parecidos posibles. Incluso se u
-tilizó el mismo tokenizador, proveniente de la librería \textit{Fastai}, para que el vocabulario 
+de manera tal que los modelos resultantes fueran los más parecidos posibles. Incluso se utilizó el mismo tokenizador, proveniente de la librería \textit{Fastai}, para que el vocabulario 
 resultante fuera el mismo y los modelos pudieran ser comparables.
 
 A pesar de esto, debido a las limitaciones de ambas implementaciones, hubo ciertas 
@@ -178,9 +175,9 @@ diferencias en la configuración:
     dicho optimizador.
 \end{itemize}
 
-\subsubsection{Resultados}
+% \subsubsection{Resultados}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.8\textwidth]{imagenes/validacion_modelo.png}
     \caption{Comparación de la capacidad predictiva de dos modelos generados a partir 
@@ -190,12 +187,12 @@ diferencias en la configuración:
     \label{fig:validacion_modelo}
 \end{figure}
 
-Como se puede observar en la figura \ref{fig:validacion_modelo}, con el correr de las épocas, no solo la 
+Como se puede observar en la Figura \ref{fig:validacion_modelo}, con el correr de las épocas, no solo la 
 \textit{performance} del modelo base generado en \textit{PyTorch} se asemeja al de su contraparte 
 implementado con la librería \textit{Fastai}, sino que también se denota una mejora en la 
 \textit{performance} frente a su contraparte a lo largo de las épocas.
 
-\subsubsection{Síntesis}
+% \subsubsection{Síntesis}
 
 A partir de esto, se concluyó que la implementación base de la AWD-LSTM genera resultados 
 parecidos al de la implementación generada a partir de herramientas más consolidadas 
@@ -210,7 +207,7 @@ Ya contando con nuestra implementación de la AWD-LSTM adaptada a las necesidade
 trabajo, para poder cumplir con nuestro objetivo de analizar la performance de la 
 arquitectura luego del reentrenamiento con datos provenientes de movimientos oculares 
 fue necesario contar con un modelo base.
-
+\bb{[Elimino salto de párrafo]} 
 Para poder obtener el mismo, entrenamos la LSTM con el corpus \textit{all\_wikis} (rejunte de textos 
 provenientes de \textit{Wiki-media}) presentado previamente.
 
@@ -226,11 +223,11 @@ Multi-Simlex al igual que en el caso de Word2Vec, en un principio con la hipóte
 poder observar una similitud mayor a los juicios humanos en comparación al modelo previo, 
 ya que estamos hablando de una arquitectura posterior en el tiempo.
 
-\subsubsection{Resultados}
+% \subsubsection{Resultados}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
-    \includegraphics[width=0.72\textwidth]{imagenes/comparacion_w2v_lstm.png}
+    \includegraphics[width=0.5\textwidth]{imagenes/comparacion_w2v_lstm.png}
     \caption{Comparación de correlaciones con Multi-Simlex entre el modelo base 
     generado a partir de Word2Vec y un modelo construido sobre la arquitectura AWD-LSTM, 
     utilizando el 100\% del corpus de entrenamiento.}
@@ -239,9 +236,9 @@ ya que estamos hablando de una arquitectura posterior en el tiempo.
 
 Se puede evidenciar que, al contrario de lo que se suponía, el modelo generado a partir 
 de la AWD-LSTM presenta una correlación peor ($0,257$) con los \textit{embeddings} humanos que su 
-contraparte generada con Word2Vec ($0,458$), al menos para el caso de Multi-Simlex.
+contraparte generada con Word2Vec ($0,458$), al menos para el caso de Multi-Simlex (Figura \ref{fig:comparacion_w2v_lstm}).
 
-\subsubsection{Síntesis}
+% \subsubsection{Síntesis}
 
 A partir de lo visto, este resultado evidencia (aún de manera no concluyente) que nuestra 
 hipótesis inicial sobre la mejor capacidad de captar similitudes entre pares de palabras 
@@ -249,7 +246,9 @@ del modelo AWD-LSTM con respecto a Word2Vec podría ser errónea. Sin embargo,
 intuimos a su vez, que será necesario generar otros modelos de AWD-LSTM para tener 
 resultados definitivos.
 
-\subsection{Variando hiperparámetros}
+% \subsection{Variando hiperparámetros}
+\subsection{\bb{Exploración de hiperparámetros}}
+\subsubsection{\bb{Tamaño del Corpus y Épocas}}
 
 En vista de los resultados del primer modelo, se tomó la decisión de variar los hiperparámetros 
 ligeramente. El primero de ellos que nos interesó variar fue la cantidad de épocas con las 
@@ -268,24 +267,24 @@ Adicionalmente, para este experimento calculamos la correlación con los \textit
 al correr de las épocas, junto con la \textit{perplexity}, para ver de qué manera estas evolucionan 
 a lo largo del tiempo.
 
-\subsubsection{Resultados}
+% \subsubsection{Resultados}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
-    \begin{subfigure}[b]{0.8\textwidth}
+    \begin{subfigure}[b]{.45\textwidth}
         \centering
-        \includegraphics[width=1\textwidth]{imagenes/simlex_corr_10per.png}
+        \includegraphics[width=\textwidth]{imagenes/simlex_corr_10per.png}
         \caption{}
         \label{fig:simlex_corr_10per.png}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.8\textwidth}
+    \begin{subfigure}[b]{.45\textwidth}
         \centering
-        \includegraphics[width=1\textwidth]{imagenes/perp_10per.png}
+        \includegraphics[width=\textwidth]{imagenes/perp_10per.png}
         \caption{}
         \label{fig:perp_10per.png}
     \end{subfigure}
-    \caption{En A, correlación con Multi-Simlex a lo largo de las épocas para el modelo con 
+    \caption{\bb{Cuidado que los índices que usas acá no se corresponden con los de la figura (acá están en mayus y en la figura en minuscula)}En A, correlación con Multi-Simlex a lo largo de las épocas para el modelo con 
     una menor porcentaje de corpus de entrenamiento pero una mayor cantidad de épocas 
     entrenadas. Se grafica consigo la correlación de los modelos de la Figura \ref{fig:comparacion_w2v_lstm} para 
     facilitar la comparación. En B, se grafica la \textit{perplexity} del mismo modelo con el correr 
@@ -303,16 +302,17 @@ evidencia una reducción constante de la misma, mostrando que el modelo está me
 capacidad predictiva a lo largo de las épocas (al menos hasta la época $17$, donde el 
 modelo parece estancarse).
 
-\subsubsection{Síntesis}
+% \subsubsection{Síntesis}
 
-Reducir el tamaño del corpus y aumentar la cantidad de épocas mejoró ligeramente la 
+\bb{En síntesis, observamos que} reducir el tamaño del corpus y aumentar la cantidad de épocas mejoró ligeramente la 
 correlación entre los \textit{embeddings}, sin llegar aún al umbral estipulado por Word2Vec. 
 Sin embargo, nos permite evidenciar que aumentar el tamaño del corpus no es 
 proporcional a la correlación con los juicios de similitud humanos, por lo que 
 se tomó la decisión de a partir de ahora seguir insistiendo con un tamaño de 
 corpus del 10\% mientras se prueban otras opciones.
 
-\subsection{Reduciendo el Learning Rate}
+% \subsection{Reduciendo el Learning Rate}
+\subsubsection{\bb{Learning Rate}}
 
 Para el siguiente modelo, valiéndose de los resultados anteriores, se eligió reducir el 
 \textit{learning rate} que se aplica en el entrenamiento de $30$ a un número menor 
@@ -320,18 +320,18 @@ Para el siguiente modelo, valiéndose de los resultados anteriores, se eligió r
 potencialmente evitando el estancamiento de su \textit{perplexity}. En este caso, se decidió 
 entrenar el modelo solamente con 25 épocas.
 
-\subsubsection{Resultados}
+% \subsubsection{Resultados}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
-    \begin{subfigure}[b]{0.8\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=1\textwidth]{imagenes/simlex_corr_lrreducido.png}
         \caption{}
         \label{fig:simlex_corr_lrreducido.png}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.8\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=1\textwidth]{imagenes/perp_lrreducido.png}
         \caption{}
@@ -352,7 +352,7 @@ Por otro lado, los resultados de la correlación con Multi-Simlex (Figura \ref{f
 mostrar resultados comparables a los anteriores modelos, posiblemente debido al poco 
 aprendizaje realizado por el modelo durante el entrenamiento.
 
-\subsubsection{Síntesis}
+% \subsubsection{Síntesis}
 
 Luego de contemplar los últimos modelos, se puede notar que un \textit{learning rate} como el que 
 se utiliza en la LSTM originalmente genera cierto estancamiento en la \textit{performance} del 
@@ -363,7 +363,8 @@ modelo no se llega a estancar, pero su \textit{performance} no es comparable a l
 predecesores. Con esto en mente, se pensó en modificar la forma en la que varía 
 el \textit{learning rate} con el fin de obtener lo mejor de los dos mundos.
 
-\subsection{Modificación de la variación del Learning Rate}
+% \subsection{Modificación de la variación del Learning Rate}
+\subsubsection{\bb{Variación del Learning Rate}}
 
 A partir de lo mencionado anteriormente, se propuso variar la manera en la que se elige 
 el \textit{learning rate} a lo largo de las épocas dentro de la AWD-LSTM. En particular, se tomó 
@@ -372,23 +373,21 @@ descendiendo el mismo de manera lineal hasta llegar al utilizado en el experimen
 anterior, buscando que el modelo no se estanque en su capacidad predictiva y sea 
 capaz de generar mejores resultados que en los casos anteriores. Adicionalmente, 
 se aumentó la cantidad de épocas a $75$ para poder tener más evidencia del estancamiento 
-de la \textit{perplexity} del modelo pasadas las épocas.
-
-Se compararon los resultados de este modelo con aquellos del modelo que utiliza 
+de la \textit{perplexity} del modelo pasadas las épocas. Se compararon los resultados de este modelo con aquellos del modelo que utiliza 
 el \textit{learning rate} original ($30$) para poder observar ambas cuestiones.
 
-\subsubsection{Resultados}
+% \subsubsection{Resultados}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
-    \begin{subfigure}[b]{0.8\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=1\textwidth]{imagenes/simlex_corr_lrdescendente.png}
         \caption{}
         \label{fig:simlex_corr_lrdescendente.png}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.8\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=1\textwidth]{imagenes/perp_lr_descendente.png}
         \caption{}
@@ -414,7 +413,7 @@ nuevo fue entrenado por una cantidad de épocas mayor que el anterior. Incluso
 al compararlo con el umbral obtenido por el modelo de Word2Vec, los resultados 
 de los modelos quedan por debajo.
 
-\subsubsection{Síntesis}
+% \subsubsection{Síntesis}
 
 Luego de variar varios hiperparámetros e incluso cambiar la forma en la que se elige 
 el \textit{learning rate} del modelo a lo largo de las épocas, no se logró igualar los 
@@ -437,18 +436,18 @@ durante $10$ épocas, con la salvedad de que esta vez se lo entrenó inicializan
 la capa de \textit{embeddings} de la red neuronal con los \textit{embeddings} provenientes 
 del modelo de Word2Vec.
 
-\subsubsection{Resultados}
+% \subsubsection{Resultados}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
-    \begin{subfigure}[b]{0.75\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=1\textwidth]{imagenes/simlex_corr_preembed.png}
         \caption{}
         \label{fig:simlex_corr_preembed.png}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.75\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=1\textwidth]{imagenes/perp_preembed.png}
         \caption{}
@@ -469,7 +468,7 @@ a la época $6$, donde la misma empieza a mejorar levemente. Más aún, también
 se puede observar que la capacidad predictiva del modelo va mejorando 
 con el correr de las épocas.
 
-\subsubsection{Síntesis}
+% \subsubsection{Síntesis}
 
 A partir de esta información, se concluye que efectivamente los \textit{embeddings} 
 extraídos del modelo resultante de la AWD-LSTM se comportan de una manera 
@@ -478,7 +477,7 @@ de la correlación con Multi-Simlex luego de terminada la primer época de
 entrenamiento. El modelo no parece estar aprovechando de ninguna manera 
 los \textit{embeddings} preentrenados, transformándolos a lo largo del correr de 
 las épocas en \textit{embeddings} parecidos a los generados por la AWD-LSTM.
-
+\bb{[Elimino salto de párrafo ]}
 Por otro lado, al observar que la capacidad predictiva del modelo mejora a 
 lo largo de las épocas (al contrario que la similitud con Multi-Simlex) nos da 
 la pauta de que estos dos resultados no están correlacionados.
@@ -486,11 +485,33 @@ la pauta de que estos dos resultados no están correlacionados.
 \section{Reentrenamiento del modelo base}
 
 \label{sec:reentrenamiento}
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{imagenes/corr_reentrenamiento.png}
+        \caption{}
+        \label{fig:corr_reentrenamiento.png}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{imagenes/corr_pred_reentrenamiento.png}
+        \caption{}
+        \label{fig:corr_pred_reentrenamiento.png}
+    \end{subfigure}
+    \caption{En A, comparación de la correlación con Multi-Simlex a lo largo de las 
+    épocas entre el modelo base elegido y los modelos reentrenados a partir del 
+    mismo. En B, para los modelos reentrenados con métricas de movimientos 
+    oculares, se reporta la correlación de las predicciones de las métricas 
+    generadas por el modelo con los valores originales a lo largo de las épocas.}
+    \label{fig:simlex_reentrenamiento}
+\end{figure}
 
 Luego de realizadas las experimentaciones pertinentes para lograr hallar un buen 
 modelo base sobre el cual reentrenar con información cognitiva, se decidió contar 
 con el modelo entrenado a partir de un learning rate linealmente descendente.
-
+\bb{[Elimino salto de párrafo ]}
 A partir de esto, se decidió reentrenar un nuevo modelo utilizándolo como base 
 para cada uno de los textos generados a partir de los experimentos con 
 movimientos oculares. Estos nuevos modelos fueron reentrenados durante 
@@ -504,29 +525,17 @@ entre las predicciones realizadas por el modelo sobre las métricas de
 movimientos oculares para cada época, con el objetivo de ver si los modelos 
 lograban aprender a predecir estas métricas a lo largo del entrenamiento.
 
-\subsection{Resultados}
+% \subsection{Resultados}
 
-\begin{figure}[H]
+
+\begin{figure}[htb]
     \centering
-    \begin{subfigure}[b]{0.8\textwidth}
-        \centering
-        \includegraphics[width=1\textwidth]{imagenes/corr_reentrenamiento.png}
-        \caption{}
-        \label{fig:corr_reentrenamiento.png}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.8\textwidth}
-        \centering
-        \includegraphics[width=1\textwidth]{imagenes/corr_pred_reentrenamiento.png}
-        \caption{}
-        \label{fig:corr_pred_reentrenamiento.png}
-    \end{subfigure}
-    \caption{En A, comparación de la correlación con Multi-Simlex a lo largo de las 
-    épocas entre el modelo base elegido y los modelos reentrenados a partir del 
-    mismo. En B, para los modelos reentrenados con métricas de movimientos 
-    oculares, se reporta la correlación de las predicciones de las métricas 
-    generadas por el modelo con los valores originales a lo largo de las épocas.}
-    \label{fig:simlex_reentrenamiento}
+    \includegraphics[width=1\textwidth]{imagenes/swow_lstm.png}
+    \caption{Comparación de la correlación entre el modelo base y los modelos reentrenados 
+    a partir de él con SWOW-RP. Para más rigurosidad estadística, se realiza un 
+    muestreo de $1000$ pares de palabras $100$ veces con reposición en vez de 
+    comparar todos los pares de palabras una sola vez.}
+    \label{fig:swow_lstm}
 \end{figure}
 
 A partir de la Figura \ref{fig:corr_reentrenamiento.png} podemos observar que la correlación con Multi-Simlex 
@@ -542,30 +551,20 @@ considerablemente con el correr de las épocas, dando indicios de que
 el modelo efectivamente está aprendiendo a predecirlas (y, por lo tanto, 
 se integran sobre los \textit{embeddings}).
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{imagenes/swow_lstm.png}
-    \caption{Comparación de la correlación entre el modelo base y los modelos reentrenados 
-    a partir de él con SWOW-RP. Para más rigurosidad estadística, se realiza un 
-    muestreo de $1000$ pares de palabras $100$ veces con reposición en vez de 
-    comparar todos los pares de palabras una sola vez.}
-    \label{fig:swow_lstm}
-\end{figure}
-
 Dentro de la correlación con SWOW-RP podemos hallar resultados parecidos 
 (Figura \ref{fig:swow_lstm}), donde la correlación es ciertamente menor en los casos en donde 
 el modelo es reentrenado, además de contar con una sutil mejora si a ese 
 reentrenamiento se lo acompaña con la información relacionada a los experimentos 
 sobre movimientos oculares.
-
+\bb{[Elimino salto de párrafo ]}
 Otro resultado que se puede denotar de esto es que si prestamos atención a 
-los resultados sobre SWOW-RP por parte de los modelos de Word2Vec (ver \ref{sec:trabajos_previos}), al igual que en el 
+los resultados sobre SWOW-RP por parte de los modelos de Word2Vec (ver \bb{Sección} \ref{sec:trabajos_previos}), al igual que en el 
 caso que con Multi-Simlex, los \textit{embeddings} provenientes del mismo son más 
 capaces de captar las similitudes entre pares de palabras puntuadas por los 
 humanos que aquellos provenientes de la AWD-LSTM, aunque en el caso de SWOW-RP 
 esta diferencia es menos notoria.
 
-\subsection{Síntesis}
+% \subsection{Síntesis}
 
 A partir de lo observado, se puede llegar a la conclusión que dentro de la 
 arquitectura AWD-LSTM los embeddings reentrenados con los \textit{scanpaths} 
@@ -577,7 +576,7 @@ información cognitiva sino en el formato del texto de reentrenamiento.
 Esta hipótesis se vuelve más sólida al observar que, durante el reentrenamiento, 
 los \textit{embeddings} efectivamente están aprendiendo a predecir las métricas relacionadas 
 con los movimientos oculares, incorporando su información.
-
+\bb{[Elimino salto de párrafo ]}
 Más aún, también se puede cuestionar la utilización de la similitud entre 
 pares de palabras como la tarea correcta para evaluar a estos modelos, ya 
 que su simpleza puede llegar a evitar que se puedan capturar estas 
