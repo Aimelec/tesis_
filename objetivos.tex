@@ -1,17 +1,14 @@
 \chapter{Objetivos}
 
-El presente trabajo se inserta dentro de una línea de investigación llevada adelante por el equipo del Laboratorio de Inteligencia Artificial Aplicada (Juan Kamienkowski, Bruno Bianchi, y Fermín Travi). El objetivo general de esta línea de trabajo es el de mejorar modelos del campo del NLP a partir de adicionales información cognitiva a los mismos durante el entrenamiento.
+El presente trabajo se inserta dentro de una línea de investigación llevada adelante por el equipo del Laboratorio de Inteligencia Artificial Aplicada (Juan Kamienkowski, Bruno Bianchi, y Fermín Travi). El objetivo general de esta línea de trabajo es el de mejorar modelos del campo del NLP a partir de adicionarles información cognitiva a los mismos durante el entrenamiento.
 
 Para avanzar en línea con ese objetivo general, la presente tesis se propone los siguientes objetivos particulares:
 \begin{itemize}
-    \item Preprocesar datos de movimientos ocualres: \bb{[mini explicación de qué implica esto]}
-    \item Seleccionar un modelo de lenguaje pertinente a la tarea a realizar: \bb{[mini explicación de qué implica esto]}
-    \item Realizar diferentes entrenamientos del modelo de lenguaje elegido: \bb{[mini explicación de qué implica esto]}
-    \item Explorar técnicas de evaluación de los resultados: \bb{[mini explicación de qué implica esto]}
+    \item Preprocesar datos de movimientos oculares: Para el cual se realizaron una serie de experimentos registrando los movimientos oculares de los sujetos mientras realizaban tareas de lectura sobre una serie seleccionada de textos breves de fuentes literarias e informativas. A partir de estos resultados se buscará acondicionar los mismos para ser utilizados en el entrenamiento de los modelos de lenguaje.
+    \item Seleccionar un modelo de lenguaje pertinente a la tarea a realizar: Partiendo en este caso de la arquitectura AWD-LSTM, se buscará adaptarla a la tarea de modelado de lenguaje a partir de los datos de movimientos oculares, ademas de realizarle distintas modificaciones para mejorar su rendimiento en diversos aspectos.
+    \item Realizar diferentes entrenamientos del modelo de lenguaje elegido: Generando a partir de esta arquitectura ya adaptada a nuestras necesidades distintos modelos de lenguaje, ajustando los hiperparámetros y las condiciones de entrenamiento para obtener los mejores resultados posibles y asi obtener un modelo base con el cual trabajar.
+    \item Analizar los modelos obtenidos: Comparando los \textit{embeddings} obtenidos a partir de los modelos de lenguaje reentrenados con los movimientos oculares con distintos repositorios de juicios de similitud humanos, con el objetivo de observar que tan bien estos capturan las relaciones entre ciertas palabras. 
 \end{itemize}
-
-
-\bb{[Esto lo pensé todo en base a la metodoloǵia, para que haya (casi) un matcheo uno a uno]}
 
 % El estudio del lenguaje ha sido, históricamente, un punto de convergencia entre distintas disciplinas como la lingüística, la neurociencia y la computación. En el caso de la lingüística, aspirando a comprender cómo se estructuran los idiomas y el lenguaje. La neurociencia por otro lado, enfocándose en comprender los procesos cerebrales que subyacen a esta capacidad. Y por último la computación, que desde sus comienzos a mediados del siglo pasado ha buscado tanto la forma de emular la comunicación entre humanos, como de lograr una comunicación fluida entre los humanos y las máquinas (\cite{Shannon1948}, \cite{Turing1950}). Esta última disciplina ha logrado grandes avances en sus objetivos en los últimos años mediante modelos de Aprendizaje Profundo, con capacidades lingüísticas similares a los humanos \parencite{ruder2018nlps}. El comportamiento de estos modelos genera una serie de preguntas sobre sus mecanismos internos. En particular, ¿son los mecanismos internos de estos modelos análogos a los que ocurren en el cerebro humano? ¿Sería posible optimizar su entrenamiento y su funcionamiento adicionándoles información cognitiva?
 

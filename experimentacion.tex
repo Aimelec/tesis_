@@ -202,6 +202,8 @@ como un punto de partida válido para nuestras experimentaciones.
 
 \section{Generación del modelo base}
 
+\label{sec:modelo_base}
+
 Ya contando con nuestra implementación de la AWD-LSTM adaptada a las necesidades de este 
 trabajo, para poder cumplir con nuestro objetivo de analizar la performance de la 
 arquitectura luego del reentrenamiento con datos provenientes de movimientos oculares 
@@ -480,7 +482,9 @@ Por otro lado, al observar que la capacidad predictiva del modelo mejora a
 lo largo de las épocas (al contrario que la similitud con Multi-Simlex) nos da 
 la pauta de que estos dos resultados no están correlacionados.
 
-\subsection{Reentrenamiento del modelo base}
+\section{Reentrenamiento del modelo base}
+
+\label{sec:reentrenamiento}
 
 Luego de realizadas las experimentaciones pertinentes para lograr hallar un buen 
 modelo base sobre el cual reentrenar con información cognitiva, se decidió contar 
@@ -499,7 +503,7 @@ entre las predicciones realizadas por el modelo sobre las métricas de
 movimientos oculares para cada época, con el objetivo de ver si los modelos 
 lograban aprender a predecir estas métricas a lo largo del entrenamiento.
 
-\subsubsection{Resultados}
+\subsection{Resultados}
 
 \begin{figure}[H]
     \centering
@@ -560,7 +564,7 @@ capaces de captar las similitudes entre pares de palabras puntuadas por los
 humanos que aquellos provenientes de la AWD-LSTM, aunque en el caso de SWOW-RP 
 esta diferencia es menos notoria.
 
-\subsubsection{Síntesis}
+\subsection{Síntesis}
 
 A partir de lo observado, se puede llegar a la conclusión que dentro de la 
 arquitectura AWD-LSTM los embeddings reentrenados con los \textit{scanpaths} 
