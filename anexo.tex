@@ -1,62 +1,160 @@
-\chapter{Anexo}
+\begin{appendices}
+    \renewcommand{\thesection}{\Alph{section}} % Use letters for section numbering in appendices
+    \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+    \chapter{Anexo}
 
-\large\textbf{Hiperparámetros del modelo}
-\vspace{0.6cm}
+    \section{Hiperparámetros del modelo}
 
-\begin{table}[H]
-    \centering
-    \begin{tblr}{|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{3cm}|}
-        \hline
-        \textbf{Hiperparámetro} & \textbf{Descripción} & \textbf{Valor por defecto} \\
-        \hline
-        layer\_num & Cantidad de celdas LSTM que presenta la red neuronal & 3 \\
-        \hline
-        embed\_size & Tamaño del embedding resultante de la capa de embeddings & 300 \\
-        \hline
-        hidden\_size & Dimensión del resultado de la capa oculta de la celda LSTM, lo que se conoce como h\_t & 1150 \\
-        \hline
-        w\_drop & Weight drop correspondiente al interior de la capa de las celdas LSTM & 0.5 \\
-        \hline
-        dropout\_i & Dropout que se aplica a los vectores de palabras resultantes de la capa de embeddings & 0.4 \\
-        \hline
-        dropout\_l & Dropout que se aplica entre medio de las conexiones entre una celda LSTM y otra & 0.3 \\
-        \hline
-        dropout\_o & Dropout que se aplica al resultado de la última capa LSTM & 0.4 \\
-        \hline
-        dropout\_e & Dropout que se aplica a la capa de embeddings & 0.1 \\
-        \hline
-        winit & Valor de inicialización de los pesos de la capa de embeddings & 0.1 \\
-        \hline
-        batch\_size & Tamaño del batch utilizado para entrenar & 30 \\
-        \hline
-        valid\_batch\_size & Tamaño del batch utilizado para medir performance en el corpus de validación & 10 \\
-        \hline
-        bptt & Tamaño de la secuencia* utilizado en el algoritmo de backpropagation through time & 70 \\
-        \hline
-        ar & Parámetro utilizado en el algoritmo de activation regularization & 2 \\
-        \hline
-        tar & Parámetro utilizado en el algoritmo de temporary activation regularization & 1 \\
-        \hline
-    \end{tblr}
-    \label{tab:hiperparametros_1}
-\end{table}
+    \begin{table}[H]
+        \centering
+        \begin{tblr}{|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{3cm}|}
+            \hline
+            \textbf{Hiperparámetro} & \textbf{Descripción} & \textbf{Valor por defecto} \\
+            \hline
+            layer\_num & Cantidad de celdas LSTM que presenta la red neuronal & 3 \\
+            \hline
+            embed\_size & Tamaño del embedding resultante de la capa de embeddings & 300 \\
+            \hline
+            hidden\_size & Dimensión del resultado de la capa oculta de la celda LSTM, lo que se conoce como h\_t & 1150 \\
+            \hline
+            w\_drop & Weight drop correspondiente al interior de la capa de las celdas LSTM & 0.5 \\
+            \hline
+            dropout\_i & Dropout que se aplica a los vectores de palabras resultantes de la capa de embeddings & 0.4 \\
+            \hline
+            dropout\_l & Dropout que se aplica entre medio de las conexiones entre una celda LSTM y otra & 0.3 \\
+            \hline
+            dropout\_o & Dropout que se aplica al resultado de la última capa LSTM & 0.4 \\
+            \hline
+            dropout\_e & Dropout que se aplica a la capa de embeddings & 0.1 \\
+            \hline
+            winit & Valor de inicialización de los pesos de la capa de embeddings & 0.1 \\
+            \hline
+            batch\_size & Tamaño del batch utilizado para entrenar & 30 \\
+            \hline
+            valid\_batch\_size & Tamaño del batch utilizado para medir performance en el corpus de validación & 10 \\
+            \hline
+            bptt & Tamaño de la secuencia* utilizado en el algoritmo de backpropagation through time & 70 \\
+            \hline
+            ar & Parámetro utilizado en el algoritmo de activation regularization & 2 \\
+            \hline
+            tar & Parámetro utilizado en el algoritmo de temporary activation regularization & 1 \\
+            \hline
+        \end{tblr}
+        \label{tab:hiperparametros_1}
+    \end{table}
 
-\begin{table}[H]
-    \centering
-    \begin{tblr}{|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{3cm}|}
-        \hline
-        weight\_decay & Constante utilizada en la regularización L2 & 1.2e-6 \\
-        \hline
-        epochs & Cantidad de épocas & 500 \\
-        \hline
-        lr & Learning rate & 30 \\
-        \hline
-        max\_grad\_norm & Threshold utilizado en el algoritmo de gradient clipping & 0.25 \\
-        \hline
-        non\_mono & Tamaño de la ventana que se utiliza para generar el estado de no monotonicidad & 5 \\
-        \hline
-    \end{tblr}
-    \label{tab:hiperparametros_2}
-\end{table}
+    \begin{table}[H]
+        \centering
+        \begin{tblr}{|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{3cm}|}
+            \hline
+            \textbf{Hiperparámetro} & \textbf{Descripción} & \textbf{Valor por defecto} \\
+            \hline
+            weight\_decay & Constante utilizada en la regularización L2 & 1.2e-6 \\
+            \hline
+            epochs & Cantidad de épocas & 500 \\
+            \hline
+            lr & Learning rate & 30 \\
+            \hline
+            max\_grad\_norm & Threshold utilizado en el algoritmo de gradient clipping & 0.25 \\
+            \hline
+            non\_mono & Tamaño de la ventana que se utiliza para generar el estado de no monotonicidad & 5 \\
+            \hline
+        \end{tblr}
+        \label{tab:hiperparametros_2}
+    \end{table}
 
-*El tamaño de la secuencia es variable de acuerdo a la época, pero utiliza este valor como base. Para ver mas, consulte en \ref{sec:awd-lstm}
+    *El tamaño de la secuencia es variable de acuerdo a la época, pero utiliza este valor como base. Para ver mas, consulte en \ref{sec:awd-lstm}
+
+
+    \begin{scriptsize}
+        \begin{sidewaystable}
+            \section{Experimentos movimientos oculares}
+            \begin{table}[H]
+                \centering
+                \begin{tblr}{|>
+                    {\centering\arraybackslash}m{5cm}|>
+                    {\centering\arraybackslash}m{2cm}|>
+                    {\centering\arraybackslash}m{2cm}|>
+                    {\centering\arraybackslash}m{2cm}|>
+                    {\centering\arraybackslash}m{2cm}|>
+                    {\centering\arraybackslash}m{2cm}|>
+                    {\centering\arraybackslash}m{2cm}|>
+                    {\centering\arraybackslash}m{2cm}|>
+                    {\centering\arraybackslash}m{2cm}|
+                    }
+                    \hline
+                    Cuento & Autor & Palabras & Fijaciones & Fijaciones Excluidas & Regresiones & Saltos de palabra \\
+                    \hline
+                    La noche de los feos & Mario Benedetti & 544 & 25774 & 10290 & 8046 & 11234 \\
+                    \hline
+                    Cómo funcionan los bolsillos & Valentín Muro & 972 & 45815 & 11677 & 16176 & 19705 \\
+                    \hline
+                    La máscara de la Muerte Roja & Edgar Allan Poe & 572 & 26641 & 6805 & 9092 & 11974 \\
+                    \hline
+                    Las fotografías & Silvina Ocampo & 618 & 26686 & 8034 & 8580 & 12636 \\
+                    \hline
+                    La salud de los enfermos & Julio Cortázar & 667 & 34486 & 7596 & 12189 & 17953 \\
+                    \hline
+                    Buenos Aires & Hernán Casciari & 607 & 28813 & 6855 & 10368 & 12932 \\
+                    \hline
+                    Wakefield & Nathaniel Hawthorne & 693 & 31610 & 9034 & 10467 & 17397 \\
+                    \hline
+                    Cómo funciona caminar en la nieve & Valentín Muro & 1066 & 47302 & 10650 & 16245 & 20937 \\
+                    \hline
+                    Ahora debería reírme, si no estuviera muerto & Angela Carter & 606 & 25629 & 7124 & 7022 & 15558 \\
+                    \hline
+                    El espejo & Haruki Murakami & 628 & 29851 & 9597 & 9170 & 16788 \\
+                    \hline
+                    Embarrar la magia & Facundo Alvarez Heduan & 683 & 34749 & 12290 & 12143 & 14400 \\
+                    \hline
+                \end{tblr}
+                \label{tab:experimento_movimientos_oculares_1}
+            \end{table}
+        \end{sidewaystable}
+    \end{scriptsize}
+
+    \begin{scriptsize}
+        \begin{sidewaystable}
+            \begin{table}[H]
+                \centering
+                \begin{tblr}{|>
+                    {\centering\arraybackslash}m{5cm}|>
+                    {\centering\arraybackslash}m{2cm}|>
+                    {\centering\arraybackslash}m{2cm}|>
+                    {\centering\arraybackslash}m{2cm}|>
+                    {\centering\arraybackslash}m{2cm}|>
+                    {\centering\arraybackslash}m{2cm}|>
+                    {\centering\arraybackslash}m{2cm}|>
+                    {\centering\arraybackslash}m{2cm}|>
+                    {\centering\arraybackslash}m{2cm}|
+                    }
+                    \hline
+                    Cuento & Autor & Palabras & Fijaciones & Fijaciones Excluidas & Regresiones & Saltos de palabra \\
+                    \hline
+                    La lluvia de fuego & Leopoldo Lugones & 640 & 30960 & 9236 & 10121 & 15979 \\
+                    \hline
+                    Educar para escalar y bucear & Andrés Rieznik & 599 & 27797 & 7472 & 9500 & 12621 \\
+                    \hline
+                    El golpe de gracia & Ambrose Bierce & 602 & 27629 & 7567 & 9540 & 14387 \\
+                    \hline
+                    La gallina degollada & Horacio Quiroga & 659 & 30188 & 8958 & 9825 & 15769 \\
+                    \hline
+                    Rubí y el lago danzante & Marcelo Cohen & 641 & 30216 & 8112 & 9332 & 15857 \\
+                    \hline
+                    La canción que cantábamos todos los días & Luciano Lamberti & 620 & 28299 & 7247 & 8418 & 15386 \\
+                    \hline
+                    El almohadón de plumas & Horacio Quiroga & 579 & 28063 & 9453 & 8301 & 15087 \\
+                    \hline
+                    Una rosa para Emilia & William Faulkner & 643 & 33946 & 8968 & 12007 & 16178 \\
+                    \hline
+                    La de la Obsesión por la Patineta & Hernán Casciari & 579 & 29200 & 8516 & 10044 & 13171 \\
+                    \hline
+                    \textbf{Total} & - & \textbf{13218} & \textbf{623654} & \textbf{175481} & \textbf{206586} & \textbf{305949} \\
+                    \hline
+                \end{tblr}
+                \label{tab:experimento_movimientos_oculares_2}
+            \end{table}
+        \end{sidewaystable}
+    \end{scriptsize}
+\end{appendices}
+
