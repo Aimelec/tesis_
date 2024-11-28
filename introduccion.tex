@@ -17,7 +17,7 @@ La investigación en NLP ha sido uno de los actores claves que han dado lugar a 
 
 Una de las primeras cuestiones que surgen cuando hablamos sobre NLP es como representar las palabras del lenguaje para que las computadoras sean capaces de reconocerlas y utilizarlas de manera eficiente. En un principio, uno estaría tentado de sugerir la idea más simple posible, y representar las palabras como comúnmente las observamos, como secuencias de caracteres. Sin embargo, es importante tener en cuenta que existe una cantidad inmensa de información extra fuera de estas cadenas de caracteres que nos permiten entender el significado de las mismas, como puede ser el contexto o la semántica de la propia palabra. Esto genera que utilizar texto plano para identificar estas palabras y alimentar a los modelos de NLP no lleve a buen puerto.
 
-Para suplir estas falencias se crearon los llamados vectores de palabras, o \textit{word embeddings}, los cuales son representaciones numéricas de palabras en un espacio de alta dimensión. Cada palabra está representada por un vector y la posición de cada palabra en este espacio se determina por el contexto en el que aparece en los textos de entrenamiento. Así, palabras con significados similares tendrán vectores cercanos en este espacio. Incluso, complejizando estos \textit{embeddings}, se puede captar información para poder reconocer de manera correcta palabras que tienen más de un significado (palabras polisémicas) \parencite{liu2020surveycontextualembeddings}.
+Para suplir estas falencias se crearon los llamados vectores de palabras, o \textit{word embeddings}, los cuales son representaciones numéricas de palabras en un espacio de alta dimensión. Cada palabra está representada por un vector y la posición de cada palabra en este espacio se determina por el contexto en el que aparece en los textos de entrenamiento. Así, palabras con significados similares tendrán vectores cercanos en este espacio (Figura \ref{fig:word_embbeding}). Incluso, complejizando estos \textit{embeddings}, se puede captar información para poder reconocer de manera correcta palabras que tienen más de un significado (palabras polisémicas) \parencite{liu2020surveycontextualembeddings}.
 
 \begin{figure}[H]
     \centering
@@ -87,11 +87,11 @@ Esta técnica para obtener \textit{word embeddings} se puede implementar utiliza
 
 \sidetext{CBOW}
 
-El modelo CBOW predice la palabra objetivo a partir de las palabras de contexto circundantes. Dicho de otro modo, utiliza las palabras del entorno para predecir la palabra en particular. Este modelo toma todas las palabras de contexto, las procesa y usa el vector resultante para predecir la palabra objetivo. Este modelo resulta beneficioso para tareas de índole más sintáctica, acompañado por un costo de computo menor \parencite{mikolov2013efficientestimationwordrepresentations}.
+El modelo CBOW predice la palabra objetivo a partir de las palabras de contexto circundantes (Figura \ref{fig:word2vec}). Dicho de otro modo, utiliza las palabras del entorno para predecir la palabra en particular. Este modelo toma todas las palabras de contexto, las procesa y usa el vector resultante para predecir la palabra objetivo. Este modelo resulta beneficioso para tareas de índole más sintáctica, acompañado por un costo de computo menor \parencite{mikolov2013efficientestimationwordrepresentations}.
 
 \sidetext{Skip-gram}
 
-El modelo Skip-Gram predice las palabras de contexto circundante a partir de una palabra objetivo. En resumen, utiliza una sola palabra para predecir su contexto circundante.
+El modelo Skip-Gram predice las palabras de contexto circundante a partir de una palabra objetivo (Figura \ref{fig:word2vec}). En resumen, utiliza una sola palabra para predecir su contexto circundante.
 Este modelo funciona bien para tareas más semánticas \parencite{mikolov2013efficientestimationwordrepresentations}. Sin embargo, es computacionalmente más costoso que el modelo CBOW debido a su tarea de predecir múltiples palabras de contexto.
 
 \sidetext{Entrenamiento}
@@ -110,7 +110,7 @@ Al descartar aleatoriamente algunas instancias de palabras frecuentes, el modelo
 
 A los \textit{embeddings} no solo los podemos encontrar como resultado de arquitecturas como Word2Vec, sino también como partes clave de otros modelos cuyo objetivo es distinto al de generar una serie de vectores de palabras; tal es el caso de algunos modelos de lenguaje, como el de la arquitectura AWD-LSTM, que será introducida en secciones siguientes.
 
-Yendo más en detalle, un modelo de lenguaje es un tipo de modelo de aprendizaje automático entrenado para establecer una distribución de probabilidad sobre las palabras. Básicamente, un modelo intenta predecir la siguiente palabra más adecuada para llenar un espacio en blanco en una oración o frase, basándose en el contexto del texto dado.
+Yendo más en detalle, un modelo de lenguaje es un tipo de modelo de aprendizaje automático entrenado para establecer una distribución de probabilidad sobre las palabras. Básicamente, un modelo intenta predecir la siguiente palabra más adecuada para llenar un espacio en blanco en una oración o frase, basándose en el contexto del texto dado (Figura \ref{fig:nlp}).
 
 \begin{figure}[H]
     \centering
@@ -125,7 +125,7 @@ Existen diferentes tipos de Modelos de Lenguaje, los cuales se pueden clasificar
 
 Por un lado, los modelos estadísticos de lenguaje son un tipo de modelo que utilizan patrones estadísticos en los datos para hacer predicciones sobre la probabilidad de secuencias específicas de palabras. Por ejemplo, un enfoque básico para construir un modelo de lenguaje probabilístico es la utilización de n-gramas, es decir conjuntos de n palabras consecutivas en un texto.
 
-Por otro lado, los modelos de lenguaje neuronales, como su nombre indica, utilizan redes neuronales para predecir la probabilidad de una secuencia de palabras. Estos modelos se entrenan con un gran corpus de datos de texto y cumplen el objetivo de predecir palabras dado un contexto al minimizar una función de costo.
+Por otro lado, los modelos de lenguaje neuronales, como su nombre indica, utilizan redes neuronales para predecir la probabilidad de una secuencia de palabras. Estos modelos se entrenan con un gran corpus de datos de texto y cumplen el objetivo de predecir palabras dado un contexto al minimizar una función de costo (Figura \ref{fig:gradiente}).
 
 \begin{figure}[H]
     \centering
@@ -147,7 +147,7 @@ Una red neuronal recurrente, o RNN, es una red neuronal profunda entrenada con d
     \label{fig:rnn}
 \end{figure}
 
-Se distinguen por su “memoria”, ya que toman información de entradas anteriores para influir en la entrada y salida actuales. Mientras que las redes neuronales profundas tradicionales suponen que las entradas y salidas son independientes entre sí, la salida de las redes neuronales recurrentes depende de los elementos anteriores dentro de la secuencia. Incluso existen tipos de RNNs cuya salida actual no solo se ve influenciada por los resultados anteriores sino también por los resultados futuros.
+Se distinguen por su “memoria”, ya que toman información de entradas anteriores para influir en la entrada y salida actuales. Mientras que las redes neuronales profundas tradicionales suponen que las entradas y salidas son independientes entre sí, la salida de las redes neuronales recurrentes depende de los elementos anteriores dentro de la secuencia (Figura \ref{fig:rnn}). Incluso existen tipos de RNNs cuya salida actual no solo se ve influenciada por los resultados anteriores sino también por los resultados futuros.
 
 Otra característica distintiva de las redes recurrentes es que comparten parámetros en cada capa de la red. Mientras que las redes tradicionales tienen diferentes pesos en cada nodo, las redes neuronales recurrentes comparten pesos en cada capa de la misma. Dichos pesos se ajustan a través de los procesos de \textit{backpropagation} y descenso por el gradiente para facilitar el aprendizaje.
 
@@ -173,7 +173,7 @@ Una solución utilizada para mitigar estos problemas, especialmente el de los gr
 
 Las redes \textit{Long Short-Term Memory} (LSTM) son una serie de arquitecturas populares de RNNs surgidas con el objetivo de solucionar el problema del \textit{exploding gradients} y \textit{vanishing gradients}. Además, con esta arquitectura se busca resolver otros inconvenientes como el de la incapacidad de asociar dependencias a largo plazo \parencite{lstm}.
 
-Para solucionar esto, las redes LSTM introducen un nuevo tipo de células de memoria, distintas a las presentes en las RNNs y capaces de retener información a lo largo de secuencias extensas. Cada célula de memoria presenta tres componentes principales: una compuerta de entrada, una de olvido y una de salida. Estas puertas ayudan a regular el flujo de información dentro y fuera de la célula de memoria.
+Para solucionar esto, las redes LSTM introducen un nuevo tipo de células de memoria, distintas a las presentes en las RNNs y capaces de retener información a lo largo de secuencias extensas. Cada célula de memoria presenta tres componentes principales: una compuerta de entrada, una de olvido y una de salida (Figura \ref{fig:lstm}). Estas puertas ayudan a regular el flujo de información dentro y fuera de la célula de memoria.
 
 \begin{figure}[H]
     \centering
@@ -196,7 +196,7 @@ Durante los años, muchas arquitecturas han florecido utilizando a las LSTM como
 
 \label{sec:awd-lstm}
 
-Otro ejemplo de modelo de lenguaje basado en LSTMs es la red \textit{ASGD Weight-Dropped LSTM} (AWD-LSTM). A diferencia de la arquitectura LSTM básica, la AWD-LSTM implementa varias técnicas de regularización a lo largo de su red neuronal, con el objetivo de mejorar la capacidad predictiva del modelo, especialmente en la capacidad del modelo para poder generalizar. Además, estas técnicas mejoran la estabilidad del modelo, ya que reducen la probabilidad de sobreajuste del mismo.
+Otro ejemplo de modelo de lenguaje basado en LSTMs es la red \textit{ASGD Weight-Dropped LSTM} (AWD-LSTM) (Figura \ref{fig:awd-lstm}). A diferencia de la arquitectura LSTM básica, la AWD-LSTM implementa varias técnicas de regularización a lo largo de su red neuronal, con el objetivo de mejorar la capacidad predictiva del modelo, especialmente en la capacidad del modelo para poder generalizar. Además, estas técnicas mejoran la estabilidad del modelo, ya que reducen la probabilidad de sobreajuste del mismo.
 
 \begin{figure}[H]
     \centering
@@ -281,9 +281,9 @@ Ahora, dado que las fijaciones (y específicamente la duración de las mismas) s
 Cada una de estas métricas puede considerarse como un índice de acceso léxico, o de qué tan fácilmente se reconoce y se recupera la palabra del léxico mental. Algunos factores que se sabe que afectan estas métricas incluyen la frecuencia y familiaridad de la palabra, la ambigüedad de significado, la predictibilidad y la asociación semántica.
 
 \begin{itemize}
-    \item \textit{Skipping Rate}: Se utiliza para determinar la proporción de palabras que no reciben fijación, o sea las palabras que son salteadas durante la primera pasada de lectura. Esta métrica se suele reportar como una probabilidad (o porcentaje) y se calcula como el número total de pruebas en los que la palabra se omitió durante la primera pasada de lectura dividido el número total de pruebas. Por ejemplo, en el scanpath de arriba vemos que la palabra crítica no fue salteada, por lo que esta prueba contribuiría a la cantidad total de pruebas pero no al numerador de la división.
+    \item \textit{Skipping Rate}: Se utiliza para determinar la proporción de palabras que no reciben fijación, o sea las palabras que son salteadas durante la primera pasada de lectura. Esta métrica se suele reportar como una probabilidad (o porcentaje) y se calcula como el número total de pruebas en los que la palabra se omitió durante la primera pasada de lectura dividido el número total de pruebas. Por ejemplo, en la figura \ref{fig:scanpath} vemos que la palabra crítica no fue salteada, por lo que esta prueba contribuiría a la cantidad total de pruebas pero no al numerador de la división.
     \item \textit{First Fixation Duration (FFD)}: Se refiere al tiempo de la primera fijación realizada en una palabra o región de interés. En el caso de ejemplo se consideraría solamente el tiempo de la fijación número 3.
-    \item \textit{Single Fixation Duration}: Métrica muy parecida a la anterior, con la diferencia de que solo se tienen en cuenta las pruebas donde se ha realizado una sola fijación sobre la palabra en cuestión o ROI. En el caso de la palabra crítica en el ejemplo no se vería contada al presentar más de una fijación.
+    \item \textit{Single Fixation Duration}: Métrica muy parecida a la anterior, con la diferencia de que solo se tienen en cuenta las pruebas donde se ha realizado una sola fijación sobre la palabra en cuestión o ROI. En el caso de la palabra crítica de la figura \ref{fig:scanpath} en el ejemplo no se vería contada al presentar más de una fijación.
     \item \textit{First Pass Reading Time}: También conocida como \textit{Gaze Duration} o FPRT, considera todas las fijaciones hechas en una palabra o ROI antes de que la mirada salga (ya sea a la izquierda o a la derecha) de la misma. Dentro del ejemplo presentado, la suma se realizaría entre los tiempos de las fijaciones 3 y 4.
 \end{itemize}
 
@@ -292,7 +292,7 @@ Cada una de estas métricas puede considerarse como un índice de acceso léxico
 Existen métricas que son difíciles de clasificar como tempranas o tardías, como las relacionadas a las regresiones dentro de la lectura, ya que pueden indicar dependiendo de cómo se las utilice como dificultad al encontrar un elemento por primera vez, así como el tiempo posterior necesario para superar esa dificultad \parencite{CliftonStaubRayner2007}.
 
 \begin{itemize}
-    \item \textit{Regression Path Duration}: también conocida como \textit{go past time}, es una medida del tiempo dedicado a la palabra en sí y a cualquier parte anterior de la oración antes de que el lector avance más allá de la palabra crítica hacia la derecha. También se puede medir una métrica parecida en términos de cantidad o como un porcentaje, es decir, cuántas pruebas tuvieron una regresión dentro del ROI. Volviendo al ejemplo, la métrica en este caso estaría compuesta por la suma de la duración de las fijaciones 3, 4, 5 y 6.
+    \item \textit{Regression Path Duration}: también conocida como \textit{go past time}, es una medida del tiempo dedicado a la palabra en sí y a cualquier parte anterior de la oración antes de que el lector avance más allá de la palabra crítica hacia la derecha. También se puede medir una métrica parecida en términos de cantidad o como un porcentaje, es decir, cuántas pruebas tuvieron una regresión dentro del ROI. Volviendo a la figura, la métrica en este caso estaría compuesta por la suma de la duración de las fijaciones 3, 4, 5 y 6.
 \end{itemize}
 
 \subsubsection{Métricas tardías}
@@ -320,7 +320,7 @@ Curiosamente, la manera de incorporar esta información cognitiva a los modelos 
 
 \subsection{Aprendizaje Multitarea}
 
-¿En qué consiste entonces esta técnica? El aprendizaje multitarea (MTL, por sus siglas en inglés) consiste en entrenar una red neuronal para ejecutar múltiples tareas compartiendo algunas de las capas y parámetros de la red entre las mismas. El objetivo es mejorar la capacidad de generalización del modelo aprovechando la información compartida entre las tareas, prediciendo varias cosas a la vez \parencite{Caruana1997}.
+¿En qué consiste entonces esta técnica? El aprendizaje multitarea (MTL, por sus siglas en inglés) consiste en entrenar una red neuronal para ejecutar múltiples tareas compartiendo algunas de las capas y parámetros de la red entre las mismas (Figura \ref{fig:multitarea}C). El objetivo es mejorar la capacidad de generalización del modelo aprovechando la información compartida entre las tareas, prediciendo varias cosas a la vez \parencite{Caruana1997}.
 
 \begin{figure}[H]
     \centering
