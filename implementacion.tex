@@ -89,7 +89,7 @@ Desafortunadamente, se pudieron observar de vuelta problemas de memoria al entre
 
 Un primer enfoque el cual se tomó fue el de recurrir a la librería \textit{PyTorch} y utilizar los \textit{dataloaders} que esta provee, permitiendo un acceso del \textit{dataset} de a \textit{batches} y evitando tener que colocarlo entero en memoria. Esta idea traía un problema crucial: el \textit{dataloader} va generando lotes cuyo texto es contiguo en el corpus, lo cual es evitado en el código original utilizando las transformaciones anteriormente mencionadas, ergo, el conjunto final de \textit{minibatches} resultaba distinto.
 
-Como se buscó mejorar el uso de la memoria del modelo sin alterar íntegramente la lógica del código, se decidió ir por otra solución. Esta solución implicó la utilización de nuevo de la librería \textit{Huggingface} y otro de sus elementos que provee para la alimentación de modelos de lenguaje con corpus de datos extensos, el uso del \textit{sharding} \bb{(Figura \ref{fig:sharding}).}
+Como se buscó mejorar el uso de la memoria del modelo sin alterar íntegramente la lógica del código, se decidió ir por otra solución. Esta solución implicó la utilización de nuevo de la librería \textit{Huggingface} y otro de sus elementos que provee para la alimentación de modelos de lenguaje con corpus de datos extensos, el uso del \textit{sharding} (Figura \ref{fig:sharding}).
 
 \begin{figure}[htb]
     \centering
