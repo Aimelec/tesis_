@@ -49,7 +49,7 @@ Para poder probar el comportamiento de nuestro modelo a futuro con las experimen
 
 Para la primera métrica, la implementación base ya presenta con la capacidad de poder calcular la \textit{perplexity} del modelo a lo largo del entrenamiento. Sin embargo, para obtener la segunda métrica se necesita una manera de obtener \textit{embeddings} a partir de la LSTM. A priori, el modelo no es un modelo dedicado a devolver los \textit{embeddings} de un vocabulario en particular como Word2Vec, sino más bien es un modelo dedicado a predecir la siguiente palabra dado un contexto. Afortunadamente, la arquitectura AWD-LSTM presenta una capa de \textit{embeddings} dentro de la red neuronal, por lo cual el siguiente cambio que se realizó a la arquitectura es el de, una vez finalizado el entrenamiento del modelo, extraer esta capa de \textit{embeddings}, la cual es una matriz de tamaño vocabulario por dimensión del \textit{embedding}, el cual es un hiperparámetro del modelo. 
 
-Una vez extraídos los \textit{embeddings} de la red, estos eran copiados en un archivo de texto en un formato compuesto de la siguiente manera (Figura \ref{fig:archivo_embedding}):
+Una vez extraídos los \textit{embeddings} de la red, estos eran copiados en un archivo de texto en un formato que permita utilizar los \textit{embeddings} para ser importados por librerías como \textit{Gensim}. Así, será sencillo hacer la comparación con otros \textit{embeddings}. El formato (Figura \ref{fig:archivo_embedding}) consiste en:
 
 \begin{itemize}
     \item Como primera línea del archivo se encuentran las dimensiones de la capa de \textit{embeddings}.
@@ -62,8 +62,6 @@ Una vez extraídos los \textit{embeddings} de la red, estos eran copiados en un 
     \caption{Ejemplo de archivo de texto donde se guardarán los \textit{embeddings} resultante del entrenamiento. En este caso, 20000 sería el tamaño del vocabulario mientras que 300 es el tamaño del \textit{embedding}.}
     \label{fig:archivo_embedding}
 \end{figure}
-
-De esta manera, estos \textit{embeddings} pueden ser importados por librerías como \textit{Gensim}, para poder hacer la comparación con otros \textit{embeddings}.
 
 Además, para poder tener una idea más detallada de cómo evolucionan estos \textit{embeddings} a medida que se entrena la LSTM, se tomó la decisión de no solo extraer los \textit{embeddings} finalizado el entrenamiento, sino al terminar cada época del mismo. Luego, estos serían comparados con los juicios de similitud de \textit{Multi-Simlex}, obteniendo la correlación entre los mismos en cada época.
 

@@ -198,7 +198,7 @@ Durante los años, muchas arquitecturas han florecido utilizando a las LSTM como
 
 Otro ejemplo de modelo de lenguaje basado en LSTMs es la red \textit{ASGD Weight-Dropped LSTM} (AWD-LSTM) (Figura \ref{fig:awd-lstm}). A diferencia de la arquitectura LSTM básica, la AWD-LSTM implementa varias técnicas de regularización a lo largo de su red neuronal, con el objetivo de mejorar la capacidad predictiva del modelo, especialmente en la capacidad del modelo para poder generalizar. Además, estas técnicas mejoran la estabilidad del modelo, ya que reducen la probabilidad de sobreajuste del mismo.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.42\textwidth]{imagenes/AWD-LSTM.drawio.png}
     \caption{Estructura clásica de un modelo basado en AWD-LSTM. El mismo presenta una capa de \textit{embeddings}, por el cual la entrada pasará y verá sus palabras transformadas en vectores de palabras. Unas 3 células LSTM y una capa softmax la cual permite obtener la distribución de probabilidades para la siguiente palabra del texto dado el vocabulario.}
@@ -225,9 +225,7 @@ Debido a estas mejoras introducidas por esta arquitectura y porque fue una de la
 
 \subsubsection{Evaluación}
 
-Una vez se tiene elegido el tipo de arquitectura de modelos de lenguaje que se utilizara para llevar a cabo nuestro propósito, es lógico preguntarse de qué manera podemos evaluar nuestros modelos para ver si se comportan de manera satisfactoria y son capaces de comprender el lenguaje humano.
-
-Para esto, fuera de las típicas métricas utilizadas para evaluar modelos de aprendizaje automático como el \textit{Accuracy} o el \textit{F1 Score}, existen otras, como la \textit{Perplexity}, la cual es considerada como una medida utilizada para cuantificar la incertidumbre asociada con una distribución de probabilidad. Esta métrica a lo largo de los años se ha utilizado como una manera de evaluar distintos modelos de lenguaje \parencite{merity2017regularizingoptimizinglstmlanguage}.
+Una vez se tiene elegido el tipo de arquitectura de modelos de lenguaje que se utilizara para llevar a cabo nuestro propósito, es lógico preguntarse de qué manera podemos evaluar nuestros modelos para ver si se comportan de manera satisfactoria y son capaces de comprender el lenguaje humano. Para esto, fuera de las típicas métricas utilizadas para evaluar modelos de aprendizaje automático como el \textit{Accuracy} o el \textit{F1 Score}, existen otras, como la \textit{Perplexity}, la cual es considerada como una medida utilizada para cuantificar la incertidumbre asociada con una distribución de probabilidad. Esta métrica a lo largo de los años se ha utilizado como una manera de evaluar distintos modelos de lenguaje \parencite{merity2017regularizingoptimizinglstmlanguage}.
 
 Yendo más en detalle, esta métrica se define como la exponenciación de la entropía de una distribución de probabilidad. Se puede expresar como:
 
